@@ -23,7 +23,23 @@ public class Main {
                 check = 1;
             }
         }
+        return a;
+    }
 
+    public static int[] bubbleCallSelf(int[] a) {
+        int check = 0;
+        for (int i=0,j=1;i<a.length-1;i++) {
+            int holdI = a[i], holdJ = a[j];
+            if (holdI > holdJ) {
+                a[i] = holdJ;
+                a[j] = holdI;
+                check = 1;
+            }
+            j++;
+        }
+        if (check == 1) {
+            bubbleCallSelf(a);
+        }
         return a;
     }
     //insertion sort
@@ -42,8 +58,11 @@ public class Main {
 
     public static void main(String[] args) {
         int[] a = {5, 1, 4, 2, 8};
+        int[] c = {5, 1, 4, 2, 8};
         bubbleSort(a);
+        bubbleCallSelf(c);
         System.out.println(Arrays.toString(a));
+        System.out.println(Arrays.toString(c));
         int[] b = {4,3,2,10,12};
         insertionSort(b);
         System.out.println(Arrays.toString(b));
