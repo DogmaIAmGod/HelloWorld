@@ -9,6 +9,7 @@ public class Merge {
         if(len<2) {
             return;
         }
+
         int mid = len/2;
         int[] l = new int[mid];
         int[] r = new int[len - mid];
@@ -28,6 +29,7 @@ public class Merge {
 
     public static void merge(int[] array, int[] l, int[] r, int left, int right) {
         int i = 0, j = 0, k = 0;
+
         while(i < left && j < right) {
             if(l[i] <= r[j]) {
                 array[k++] = l[i++];
@@ -35,13 +37,13 @@ public class Merge {
                 array[k++] = r[j++];
             }
         }
-        System.out.println(k);
+
         while (i < left) {
             array[k++] = l[i++];
         }
+
         while (j < right) {
             array[k++] = r[j++];
         }
     }
-
 }
