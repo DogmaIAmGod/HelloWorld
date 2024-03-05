@@ -1,13 +1,8 @@
-package Class2_27;
+package Sorts;
 
-import Userful.Random;
-
-import java.util.Arrays;
-
-public class Main {
-
+public class Quick {
     static void quickSort(int[] array) {
-        qS(array, 0, array.length - 1);
+        qS(array,0,array.length-1);
     }
 
     static void swap(int[] array, int pos1, int pos2) {
@@ -26,8 +21,8 @@ public class Main {
                 r--;
             }
 
-            if (l <= r) {
-                swap(array, l, r);
+            if(l <= r) {
+                swap(array,l,r);
                 l++;
                 r--;
             }
@@ -40,21 +35,8 @@ public class Main {
             int mid = (s + e) / 2;
             int pivot = array[mid];
             int index = partition(array, s, e, pivot);
-            qS(array, s, index - 1);
+            qS(array,s, index-1);
             qS(array, index, e);
         }
-    }
-
-    public static void main(String[] args) {
-        int[] a = {1,13,14,14,11,3,6,9,14,12,11,5,6,8,7};
-        int[] b = Random.generateRandomArray(100,1,9999);
-        String[] c = Random.generateRandomArray(100);
-        String[] d = Random.generateRandomWords(10);
-        quickSort(a);
-        quickSort(b);
-        System.out.println(Arrays.toString(a));
-//        System.out.println(Arrays.toString(b));
-//        System.out.println(Arrays.toString(c));
-//        System.out.println(Arrays.toString(d));
     }
 }
