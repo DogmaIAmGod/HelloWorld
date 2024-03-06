@@ -1,7 +1,7 @@
 package Sorts;
 
 public class Quick {
-    static void quickSort(int[] array) {
+    public static void quickSort(int[] array) {
         qS(array,0,array.length-1);
     }
 
