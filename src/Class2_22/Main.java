@@ -1,8 +1,5 @@
 package Class2_22;
 
-import java.lang.reflect.Field;
-import java.util.Arrays;
-
 public class Main {
 
     public static void preOrderPrint(BinaryTree root) {
@@ -28,29 +25,22 @@ public class Main {
     public static void main(String[] args) {
 
         BinaryTree a = new BinaryTree("a");
-        BinaryTree b = new BinaryTree("b");
-        BinaryTree c = new BinaryTree("c");
+        BinaryTree b = new BinaryTree("B");
+        BinaryTree c = new BinaryTree("C");
         BinaryTree d = new BinaryTree("d");
         BinaryTree e = new BinaryTree("e");
-        BinaryTree f = new BinaryTree("f");
+        BinaryTree f = new BinaryTree("F");
         BinaryTree g = new BinaryTree("g");
-        BinaryTree h = new BinaryTree("h");
-        BinaryTree i = new BinaryTree("i");
-        BinaryTree j = new BinaryTree("j");
-        BinaryTree k = new BinaryTree("k");
-        BinaryTree l = new BinaryTree("l");
 
-        a.addChild(b,c);
-        b.addChild(d,e);
-        d.addChild(g,null);
-        e.addChild(h,i);
-        i.addChild(l,null);
-        c.addChild(null, f);
-        f.addChild(j,k);
+        BinaryTree[] bt = {a,b,c,d,e,f,g};
+        BinaryTree.BinarySearchTree(bt);
+//        BinaryTree.binaryTreeSearch(a,"B",0);
 
-        for(Field p : a.getClass().getFields()) {
-            System.out.println(p.getName());
-        }
+
+
+//        a.addChild(b,c);
+//        c.addChild(d,e);
+//        d.addChild(f,g);
 
 //        System.out.println("\nPre");
 //        preOrderPrint(a);
