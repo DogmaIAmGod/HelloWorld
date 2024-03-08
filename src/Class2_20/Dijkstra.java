@@ -58,7 +58,7 @@ public class Dijkstra {
 
 
     public static void main(String[] args) {
-        /*
+
         Node s = new Node("s");
         Node y = new Node("y");
         Node t = new Node("t");
@@ -76,31 +76,9 @@ public class Dijkstra {
         Edge z_x = new Edge(z, x, 6);
         Edge[] edges = {s_t,t_x,s_y,y_t,t_y,y_z,y_x,z_s,x_z,z_x};
         shortestLength(0,x,s,edges);
-        */
 
-        DepthFirst df = new DepthFirst(4);
 
-        df.addEdge(0, 1);
-        df.addEdge(0, 2);
-        df.addEdge(1, 2);
-        df.addEdge(2, 0);
-        df.addEdge(2, 3);
-        df.addEdge(3, 3);
 
-        df.depthFirstSearch(2);
-
-        System.out.println("\n");
-
-        BreathFirst bf = new BreathFirst(4);
-
-        bf.addEdge(0, 1);
-        bf.addEdge(0, 2);
-        bf.addEdge(1, 2);
-        bf.addEdge(2, 0);
-        bf.addEdge(2, 3);
-        bf.addEdge(3, 3);
-
-        bf.breathFirstSearch(2);
 
     }
 }

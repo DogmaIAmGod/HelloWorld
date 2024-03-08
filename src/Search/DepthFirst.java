@@ -1,4 +1,4 @@
-package Class2_20;
+package Search;
 import java.util.LinkedList;
 @SuppressWarnings("ALL")
 
