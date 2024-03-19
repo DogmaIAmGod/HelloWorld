@@ -24,7 +24,6 @@ public class Random {
         return array;
     }
 
-
     public static String generateRandomLetter() {
         if(generateRandomNumber(0,1) == 0) {
             return Character.toString((char) generateRandomNumber(65,90));
@@ -47,5 +46,13 @@ public class Random {
             a = new StringBuilder("");
         }
         return words;
+    }
+
+    public static String generateRandomWord(int lengthOfWord) {
+        String word = "";
+        for(int i=0;i<lengthOfWord;i++) {
+            word += Character.toString((char) generateRandomNumber(33,126));
+        }
+        return word;
     }
 }
