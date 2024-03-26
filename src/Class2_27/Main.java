@@ -1,6 +1,6 @@
 package Class2_27;
 
-import Userful.Random;
+import Userful.UsefulRandom;
 
 import java.util.Arrays;
 
@@ -47,9 +47,9 @@ public class Main {
 
     public static void main(String[] args) {
         int[] a = {1,13,14,14,11,3,6,9,14,12,11,5,6,8,7};
-        int[] b = Random.generateRandomArray(100,1,9999);
-        String[] c = Random.generateRandomArray(100);
-        String[] d = Random.generateRandomWords(10);
+        int[] b = UsefulRandom.generateRandomArray(100,1,9999);
+        String[] c = UsefulRandom.generateRandomArray(100);
+        String[] d = UsefulRandom.generateRandomWords(10);
         quickSort(a);
         quickSort(b);
         System.out.println(Arrays.toString(a));

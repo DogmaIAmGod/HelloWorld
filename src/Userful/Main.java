@@ -1,13 +1,12 @@
 package Userful;
 
-import Sorts.Quick;
-
-import java.util.Arrays;
+import static Userful.BinaryTree.*;
 
 public class Main {
-public static void main(String[] args) {
-   String[] strings =  Random.generateRandomWords(10);
-    System.out.println(Arrays.toString(strings));
-    System.out.println(Random.generateRandomWord(30));
-}
+    public static void main(String[] args) {
+        String[] words = {"tie","grip","ethereal","steal","heavenly","industrious","jolly","basket","delay","satisfying","educate","observation","crush","dedicate","repeat","notebook","fail","create","hush","prickly"};
+        BinaryTree root = binaryTreeSearch(words);
+        System.out.println(root.name + ": " + root.value +"\nLeft Node: " + root.leftN.value + "\nRight Node: " + root.rightN.value);
+//        inOrderPrint(root);
+    }
 }

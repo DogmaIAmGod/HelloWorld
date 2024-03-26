@@ -1,8 +1,11 @@
 package Userful;
 
+import java.util.Arrays;
+import java.util.Random;
 import java.util.SplittableRandom;
 
-public class Random {
+@SuppressWarnings("unused")
+public class UsefulRandom {
     public static int generateRandomNumber(int rangeMin, int rangeMax) {
         SplittableRandom splittableRandom = new SplittableRandom();
         return splittableRandom.nextInt(rangeMin,rangeMax+1);
@@ -43,16 +46,40 @@ public class Random {
                 a.append(generateRandomLetter());
             }
             words[i] = String.valueOf(a);
-            a = new StringBuilder("");
+            a = new StringBuilder();
         }
         return words;
     }
 
+
     public static String generateRandomWord(int lengthOfWord) {
-        String word = "";
+        StringBuilder word = new StringBuilder();
         for(int i=0;i<lengthOfWord;i++) {
-            word += Character.toString((char) generateRandomNumber(33,126));
+            word.append((char) generateRandomNumber(33, 126));
         }
-        return word;
+        return word.toString();
+    }
+
+    public static void shuffleArray(int[] array) {
+        Random rand = new Random();
+
+        for (int i = array.length - 1; i > 0; i--) {
+            int index = rand.nextInt(i + 1);
+            int temp = array[index];
+            array[index] = array[i];
+            array[i] = temp;
+        }
+    }
+
+    public static int[] generateNonRepeatingRandomArray(int min, int max) {
+        int diff = max-min + 1;
+        int[] result = new int[diff];
+        for (int i = min, j = 0; j < diff; i++) {
+            result[j] = i;
+            j++;
+        }
+        System.out.println(Arrays.toString(result));
+        shuffleArray(result);
+        return result;
     }
 }
