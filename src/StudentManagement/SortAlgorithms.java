@@ -8,7 +8,7 @@ import static StudentManagement.Main.run;
 public class SortAlgorithms {
     public static void sortStudentsById(ArrayList<Student> student) {
         Scanner input = new Scanner(System.in);
-        System.out.print("1 | Sort by ID\n2 | Sort by Name\nHow would you like to sort: ");
+        System.out.print("1 | Sort by ID\n2 | Sort by Age\n3 | Sort by Grade\n4 | Sort by Name\nHow would you like to sort: ");
         while(!input.hasNextInt()) {
             input.nextLine();
             System.out.print("How would you like to sort: ");
@@ -16,7 +16,7 @@ public class SortAlgorithms {
         int choice = input.nextInt();
         input.nextLine();
 
-        while(choice > 2) {
+        while(choice > 4) {
             System.out.print("1 | Sort by ID\n2 | Sort by Name\nHow would you like to sort: ");
             choice = input.nextInt();
             input.nextLine();
@@ -25,8 +25,14 @@ public class SortAlgorithms {
         if(choice == 1) {
             student.sort(Comparator.comparingInt(s -> s.id));
         }
-        if (choice == 2) {
+        if (choice == 4) {
             student.sort(Comparator.comparing(s -> s.name));
+        }
+        if (choice == 2) {
+            student.sort(Comparator.comparingInt(s -> s.age));
+        }
+        if (choice == 3) {
+            student.sort(Comparator.comparing(s -> s.grade));
         }
 
         for(Student i : student) {
