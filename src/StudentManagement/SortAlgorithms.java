@@ -6,7 +6,7 @@ import java.util.Scanner;
 import static StudentManagement.Main.run;
 
 public class SortAlgorithms {
-    public static void sortStudentsById(ArrayList<Student> student) {
+    public static void sortStudents(ArrayList<Student> student) {
         Scanner input = new Scanner(System.in);
         System.out.print("1 | Sort by ID\n2 | Sort by Age\n3 | Sort by Grade\n4 | Sort by Name\nHow would you like to sort: ");
         while(!input.hasNextInt()) {
@@ -16,23 +16,25 @@ public class SortAlgorithms {
         int choice = input.nextInt();
         input.nextLine();
 
-        while(choice > 4) {
+        while(choice != 1 && choice != 2 && choice != 3 && choice !=4) {
             System.out.print("1 | Sort by ID\n2 | Sort by Name\nHow would you like to sort: ");
             choice = input.nextInt();
             input.nextLine();
         }
 
-        if(choice == 1) {
-            student.sort(Comparator.comparingInt(s -> s.id));
-        }
-        if (choice == 4) {
-            student.sort(Comparator.comparing(s -> s.name));
-        }
-        if (choice == 2) {
-            student.sort(Comparator.comparingInt(s -> s.age));
-        }
-        if (choice == 3) {
-            student.sort(Comparator.comparing(s -> s.grade));
+        switch (choice) {
+            case 1:
+                student.sort(Comparator.comparingInt(s -> s.id));
+                break;
+            case 2:
+                student.sort(Comparator.comparingInt(s -> s.age));
+                break;
+            case 3:
+                student.sort(Comparator.comparingInt(s -> s.grade));
+                break;
+            case 4:
+                student.sort(Comparator.comparing(s -> s.name));
+                break;
         }
 
         for(Student i : student) {

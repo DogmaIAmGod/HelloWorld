@@ -9,5 +9,4 @@ public class Student {
         grade = stu_grade;
         name = stu_name;
     }
-
 }

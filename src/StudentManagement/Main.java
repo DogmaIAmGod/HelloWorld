@@ -2,19 +2,18 @@ package StudentManagement;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import static StudentManagement.StudentManagementSystem.*;
 import static StudentManagement.SortAlgorithms.*;
 
 public class Main {
 
     public static void run(ArrayList<Student> students) {
-//        ArrayList<Student> students = new ArrayList<>();
-//        students.add(new Student(3, 22, 85, "Alice"));
-//        students.add(new Student(1, 20, 75, "Bob"));
-//        students.add(new Student(2, 21, 80, "Charlie"));
         Scanner input = new Scanner(System.in);
         System.out.print("\n1 | Add Student\n2 | Delete Student\n3 | Search for Student\n4 | Display all Students\n5 | Sort Students\nWhat do you want to do: ");
+        while(!input.hasNextInt()) {
+            input.nextLine();
+            System.out.print("What do you want to do: ");
+        }
         int want = input.nextInt();
         switch (want) {
             case 1:
@@ -30,10 +29,9 @@ public class Main {
                 displayStudent(students);
                 break;
             case 5:
-                sortStudentsById(students);
+                sortStudents(students);
                 break;
             default:
-//                run();
                 System.exit(0);
                 break;
         }
