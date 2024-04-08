@@ -1,15 +1,15 @@
 package Userful;
 
-import Search.Binary;
+
+import static Userful.ValueOfString.*;
 
 public class BinaryTree {
-    BinaryTree leftN, rightN; String name; int value;
+    BinaryTree leftN, rightN; String name;
 
-    public BinaryTree(String nodeName, int val) {
+    public BinaryTree(String nodeName) {
         leftN = null;
         rightN = null;
         name = nodeName;
-        value = val;
     }
 
     public static void preOrderPrint(BinaryTree root) {
@@ -33,49 +33,43 @@ public class BinaryTree {
         System.out.print(root.name + ", ");
     }
 
-    private static BinaryTree[] arrayofNodes(Object[][] objs) {
-        BinaryTree[] bt = new BinaryTree[objs.length];
-        for(int i = 0; i < objs.length; i++) {
-            bt[i] = new BinaryTree((String) objs[i][0], (Integer) objs[i][1]);
+    private static BinaryTree[] makeBinaryTreeArray(String[] a) {
+        BinaryTree[] returnArray = new BinaryTree[a.length];
+        for (int i = 0; i < a.length; i++) {
+            returnArray[i] = new BinaryTree(a[i]);
         }
-        return bt;
+        return returnArray;
     }
 
     public static BinaryTree binaryTreeSearch(String[] words) {
-        Object[][] wordPairs = ValueOfString.stringValuePair(words);
-        BinaryTree[] bt = arrayofNodes(wordPairs);
-        BinaryTree root = bt[0];
-        System.out.println("Root: " + root.name + " Root Value: " + root.value);
-        for (int i = 1; i < bt.length; i++) {
-            //Start at the root
-            BinaryTree node = root;
-            BinaryTree parentNode = root;
-            //Check value of current node vs the "root"
-            //and get the node of where this is supposed to go
-            boolean bigOrSmall = node.value < bt[i].value;
-            BinaryTree tempNode = bigOrSmall ? node.leftN : node.rightN;
+        //take words and make nodes
+        BinaryTree[] tree = makeBinaryTreeArray(words);
 
-            while (tempNode != null) {
-                parentNode = node;
-                if(bigOrSmall) {
-                    node = node.leftN;
-                } else {
-                    node = node.rightN;
-                }
-                bigOrSmall = node.value < bt[i].value;
-                tempNode = bigOrSmall ? node.leftN : node.rightN;
+        for(int i=1;i<tree.length;i++) {
+
+            //Store top of the tree
+            BinaryTree root = tree[0];
+
+            //true, word 2 has more value : false, word 2 has less value
+            boolean leftRight = compareString(root.name,tree[i].name);
+            BinaryTree checkNull = leftRight ? root.rightN : root.leftN;
+
+            //traverse
+            while (checkNull != null) {
+                root = checkNull;
+                leftRight = compareString(root.name,tree[i].name);
+                checkNull = leftRight ? root.rightN : root.leftN;
             }
 
-            System.out.println("Name: " + bt[i].name  + " Value: " + bt[i].value);
-//            System.out.println(bigOrSmall);
-            if(bigOrSmall) {
-                parentNode.leftN = bt[i];
-                System.out.println("Left Node Name: " + node.name  + " Node Value: " + node.value);
+            //place after traversal
+            if(leftRight) {
+                root.rightN = tree[i];
             } else {
-                parentNode.rightN = bt[i];
-                System.out.println("Right Node Name: " + node.name  + " Node Value: " + node.value);
+                root.leftN = tree[i];
             }
         }
-        return root;
+
+        //return after tree is made
+        return tree[0];
     }
 }
